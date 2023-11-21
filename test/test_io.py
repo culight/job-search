@@ -14,7 +14,7 @@ LOGGER = logging.getLogger(__name__)
 # bring io files into workig directory
 import sys
 
-
+sys.path.insert(0, "../job_search")
 # ==============================================================================
 
 

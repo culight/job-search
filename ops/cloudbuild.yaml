@@ -1,0 +1,3 @@
+steps:
+  - name: install_dependencies
+    entrypoint: python

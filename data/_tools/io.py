@@ -5,6 +5,7 @@ DEVELOPER NOTES:
 """
 
 import logging
+import os
 
 from google.cloud import storage
 
@@ -34,3 +35,10 @@ class GCSClient:
         blob = bucket.blob(source_blob_name)
         blob.download_to_filename(destination_file_name)
         LOGGER.info(f"Blob {source_blob_name} downloaded to {destination_file_name}.")
+
+    def upload_dir(self, source_dir_name, destination_dir_name):
+        bucket = self.get_bucket()
+        for file in os.listdir(source_dir_name):
+            blob = bucket.blob(destination_dir_name + "/" + file)
+            blob.upload_from_filename(source_dir_name + "/" + file)
+            LOGGER.info(f"File {file} uploaded to {destination_dir_name}.")

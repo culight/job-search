@@ -4,6 +4,6 @@ steps:
     entrypoint: /bin/sh
     args: ["-c", "pip install -r requirements.txt"]
   # run unit tests
-  # - name: python
-  #   entrypoint: python
-  #   args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"]
+  - name: python
+    entrypoint: python
+    args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"]

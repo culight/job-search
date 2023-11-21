@@ -7,6 +7,7 @@ DEVELOPER NOTES:
 import logging
 import os
 
+from google.cloud import bigquery
 from google.cloud import storage
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
@@ -42,3 +43,28 @@ class GCSClient:
             blob = bucket.blob(destination_dir_name + "/" + file)
             blob.upload_from_filename(source_dir_name + "/" + file)
             LOGGER.info(f"File {file} uploaded to {destination_dir_name}.")
+
+
+class BigQueryClient:
+    def __init__(self, project_id):
+        self.project_id = project_id
+        self.client = bigquery.Client(project=self.project_id)
+
+    def get_table(self, dataset_name, table_name):
+        return self.client.get_table(f"{self.project_id}.{dataset_name}.{table_name}")
+
+    def create_table(self, dataset_name, table_name, schema):
+        dataset = bigquery.Dataset(f"{self.project_id}.{dataset_name}")
+        table = bigquery.Table(dataset.table(table_name), schema=schema)
+        table = self.client.create_table(table)
+        LOGGER.info(
+            f"Created table {table.project}.{table.dataset_id}.{table.table_id}"
+        )
+
+    def insert_rows(self, dataset_name, table_name, rows):
+        table = self.get_table(dataset_name, table_name)
+        errors = self.client.insert_rows(table, rows)
+        if errors == []:
+            LOGGER.info(f"New rows have been added.")
+        else:
+            LOGGER.error(f"Encountered errors while inserting rows: {errors}")

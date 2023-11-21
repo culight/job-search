@@ -1,3 +1,6 @@
 steps:
-  - name: install_dependencies
-    entrypoint: python
+  - name: google/cloud-sdk
+    entrypoint: /bin/sh
+    args:
+      - -c
+      - "pip install requirements.txt"

@@ -3,4 +3,4 @@ steps:
     entrypoint: /bin/sh
     args:
       - -c
-      - "pip install requirements.txt"
+      - "pip install -r requirements.txt"

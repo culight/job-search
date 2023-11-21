@@ -2,6 +2,6 @@ steps:
   - name: google/cloud-sdk
     entrypoint: /bin/sh
     args:
-      - ls
+      - -ls
       - -c
       - "pip install -r requirements.txt && python -m pytest ../tests"

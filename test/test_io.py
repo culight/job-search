@@ -11,10 +11,15 @@ import pytest
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
 
+# bring io files into workig directory
+import sys
+
+
 # ==============================================================================
 
 
 def test_gcs_client():
+    sys.path.append("../data/tools/io/GCSClient.py")
     from data._tools.io import GCSClient
 
     gcs_client = GCSClient(bucket_name="test", project_id="test")

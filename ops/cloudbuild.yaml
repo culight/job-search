@@ -3,6 +3,6 @@ steps:
     entrypoint: /bin/sh
     args:
       - -c
-      - -ls
-      - -ls ..
+      - "ls"
+      - "ls .."
       # - "pip install -r requirements.txt && python -m pytest ../tests"

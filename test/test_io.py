@@ -19,8 +19,8 @@ import sys
 
 
 def test_gcs_client():
-    sys.path.append("../data/tools/io/GCSClient.py")
-    from data._tools.io import GCSClient
+    # sys.path.append("../data/tools/io/GCSClient.py")
+    from job_search.data._tools.io import GCSClient
 
     gcs_client = GCSClient(bucket_name="test", project_id="test")
     # assert gcs_client.bucket_name == "test"

@@ -2,4 +2,4 @@ steps:
   # run unit tests
   - name: python
     entrypoint: /bin/sh
-    args: ["-c", "pip install -r requirements.txt", pytest test/*"]
+    args: ["-c", "pip install -r requirements.txt", "pytest test/test_*.py"]

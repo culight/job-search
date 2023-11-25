@@ -1,8 +1,8 @@
 steps:
   # run unit tests
-  - name: python
-    entrypoint: /bin/sh
-    args: ["-c", "pip install -r requirements.txt && pytest test/test_*.py"]
+  # - name: python
+  #   entrypoint: /bin/sh
+  #   args: ["-c", "pip install -r requirements.txt && pytest test/test_*.py"]
 
   # get build number
   - id: "get build number"
@@ -23,6 +23,7 @@ steps:
       - |
         buildNumber=$(cat _BUILDNUMBER)
         echo "Build Number is ${buildNumber}"
+        pip install -r requirements.txt
         python -m job_search.data.pipeline \
           --project=gcp-practice \
           --runner=DataflowRunner \

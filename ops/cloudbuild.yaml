@@ -16,8 +16,7 @@ steps:
     waitFor: ["-"]
 
   - id: "build and submit the dataflow job"
-    name: maven:3.6.0-jdk-11-slim
-    dir: "cloudbuild-dataflow-demo/streaming"
+    name: gcr.io/google.com/cloudsdktool/google-cloud-cli:slim
     entrypoint: "bash"
     args:
       - "-c"

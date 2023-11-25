@@ -16,7 +16,7 @@ steps:
     waitFor: ["-"]
 
   - id: "build and submit the dataflow job"
-    name: gcr.io/google-appengine/python
+    name: python:3.9.18-slim-bullseye
     entrypoint: "bash"
     args:
       - "-c"

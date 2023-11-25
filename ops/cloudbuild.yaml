@@ -3,3 +3,32 @@ steps:
   - name: python
     entrypoint: /bin/sh
     args: ["-c", "pip install -r requirements.txt && pytest test/test_*.py"]
+
+  # get build number
+  - id: "get build number"
+    name: gcr.io/cloud-builders/git
+    dir: "."
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        git rev-parse --short HEAD > _BUILDNUMBER
+    waitFor: ["-"]
+
+  - id: "build and submit the dataflow job"
+    name: maven:3.6.0-jdk-11-slim
+    dir: "cloudbuild-dataflow-demo/streaming"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        buildNumber=$(cat _BUILDNUMBER)
+        echo "Build Number is ${buildNumber}"
+        python -m folder.main \
+          --project=gcp-practice \
+          --runner=DataflowRunner \
+          --region=us-central1 \
+          --setup_file=./setup.py \
+          --temp_location=gs://dataflow-jobsearch-bucket/temp \
+          --service_account_email=dmoton3.14@gmail.com
+    waitFor: ["get build number"]

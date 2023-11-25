@@ -1,5 +1,7 @@
-flet==0.12.2
-google_api_python_client==2.107.0
+apache_beam==2.52.0
+flet==0.13.0
+google_api_python_client==2.108.0
 jobspy==0.29.0
-protobuf==3.20.3
-pytest==7.4.0
+protobuf==4.25.1
+pytest==7.4.3
+Requests==2.31.0

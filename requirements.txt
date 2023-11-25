@@ -5,3 +5,5 @@ jobspy==0.29.0
 protobuf==4.25.1
 pytest==7.4.3
 Requests==2.31.0
+setuptools==68.2.2
+pandas==1.3.5

@@ -10,6 +10,7 @@ import apache_beam as beam
 from apache_beam.options.pipeline_options import SetupOptions
 from apache_beam.options.pipeline_options import PipelineOptions
 from apache_beam.dataframe.convert import to_pcollection
+
 from jobspy import scrape_jobs
 
 VALID_SOURCES = ("indeed", "linkedin", "zip_recruiter", "glassdoor")

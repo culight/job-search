@@ -19,10 +19,10 @@ LOGGER = logging.getLogger(__name__)
 # ==============================================================================
 
 
-def build_pipeline():
-    extraction_pipeline.run()
+def build_pipeline(argv):
+    extraction_pipeline.run(argv)
 
 
 if __name__ == "__main__":
-    logging.getLogger().setLevel(logging.INFO)
-    build_pipeline()
+    import sys
+    build_pipeline(sys.argv[1:])

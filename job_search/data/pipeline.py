@@ -6,11 +6,6 @@ DEVELOPER NOTES:
 
 import logging
 
-import apache_beam as beam
-from apache_beam.options.pipeline_options import SetupOptions
-from apache_beam.options.pipeline_options import PipelineOptions
-from apache_beam.dataframe.convert import to_pcollection
-
 from .extract import extraction_pipeline
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)

@@ -24,6 +24,7 @@ steps:
         buildNumber=$(cat _BUILDNUMBER)
         echo "Build Number is ${buildNumber}"
         pip install -r requirements.txt
+        pip list
         python -m job_search.data.pipeline \
           --project=gcp-practice \
           --runner=DataflowRunner \

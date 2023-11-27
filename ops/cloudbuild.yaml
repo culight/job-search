@@ -21,13 +21,11 @@ steps:
     args:
       - "-c"
       - |
-        buildNumber=$(cat _BUILDNUMBER)
-        echo "Build Number is ${buildNumber}"
-
-      - pip --user install -r requirements.txt
-      - |
-        pip list
-        python -m job_search.data.pipeline \
+        buildNumber=$(cat _BUILDNUMBER) \
+        && echo "Build Number is ${buildNumber}" \
+        && pip --user install -r requirements.txt \
+        && pip list \
+        && python -m job_search.data.pipeline \
           --project=gcp-practice \
           --runner=DataflowRunner \
           --region=us-central1 \

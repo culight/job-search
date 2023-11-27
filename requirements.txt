@@ -1,4 +1,4 @@
-apache_beam[gcp]==2.52.0
+apache_beam[gcp]==2.48.0
 flet==0.13.0
 google_api_python_client==2.108.0
 jobspy==0.29.0

@@ -12,7 +12,7 @@ steps:
         "build",
         "Requests",
         "pandas",
-        "apache_beam[gcp]==2.48.0",
+        "apache_beam[gcp]",
         "jobspy",
         "--user",
       ]

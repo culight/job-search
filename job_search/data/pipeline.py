@@ -8,7 +8,6 @@ import logging
 
 # from .extract import extraction_pipeline
 import apache_beam as beam
-from apache_beam.options.pipeline_options import SetupOptions
 from apache_beam.options.pipeline_options import PipelineOptions
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)

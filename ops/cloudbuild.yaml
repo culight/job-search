@@ -1,18 +1,16 @@
 steps:
-  - name: "python"
+  - name: "gcr.io/$PROJECT_ID/dataflow-python3"
+    entrypoint: "/bin/bash"
+    args: ["-c", "source /venv/bin/activate"]
+  - name: "gcr.io/$PROJECT_ID/dataflow-python3"
     entrypoint: "python"
-    args: ["-m", "pip", "install", "--upgrade", "pip"]
-  - name: python
-    entrypoint: python
     args:
       [
         "-m",
-        "pip",
-        "install",
-        "build",
-        "Requests",
-        "pandas",
-        "apache_beam[gcp]",
-        "jobspy",
-        "--user",
+        "job_search.data.pipeline.build_pipeline",
+        "--runner=DataflowRunner",
+        "--temp_location=gs://dataflow-jobsearch-bucket/temp",
+        "--staging_location=gs://dataflow-jobsearch-bucket",
+        "--project=$PROJECT_ID",
       ]
+tags: ["cloud-builders-community"]

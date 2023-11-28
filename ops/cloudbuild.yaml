@@ -16,7 +16,7 @@ steps:
     waitFor: ["-"]
 
   - id: "build and submit the dataflow job"
-    name: "python:3.11-stretch"
+    name: "python:3.11"
     entrypoint: "bash"
     args:
       - "-c"

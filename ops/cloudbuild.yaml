@@ -13,4 +13,3 @@ steps:
         "--staging_location=gs://dataflow-jobsearch-bucket",
         "--project=$PROJECT_ID",
       ]
-tags: ["cloud-builders-community"]

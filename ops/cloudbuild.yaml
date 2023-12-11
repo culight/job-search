@@ -22,6 +22,7 @@ steps:
       - |
         buildNumber=$(cat _BUILDNUMBER) \
         && echo "Build Number is ${buildNumber}" \
+        && pip install --upgrade pip \
         && pip install -r requirements.txt \
         && pip list \
         && python -m job_search.data.pipeline \

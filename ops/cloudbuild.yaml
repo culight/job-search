@@ -4,29 +4,16 @@ steps:
   #   entrypoint: /bin/sh
   #   args: ["-c", "pip install -r requirements.txt && pytest test/test_*.py"]
 
-  - id: "get build number"
-    name: gcr.io/cloud-builders/git
-    dir: "."
-    entrypoint: "bash"
-    args:
-      - "-c"
-      - |
-        git rev-parse --short HEAD > _BUILDNUMBER
-    waitFor: ["-"]
-
   - id: "build and submit the dataflow job"
     name: "python:3.10"
     entrypoint: "bash"
     args:
       - "-c"
       - |
-        buildNumber=$(cat _BUILDNUMBER) \
-        && echo "Build Number is ${buildNumber}" \
-        && pip install -r requirements.txt \
-        && python -m job_search.data.pipeline \
+        && pip3 install -r requirements.txt \
+        && python3 -m job_search.data.pipeline \
           --project=gcp-practice-365607 \
           --runner=DataflowRunner \
           --region=us-central1 \
           --setup_file=./setup.py \
           --temp_location=gs://dataflow-jobsearch-bucket/temp \
-    waitFor: ["get build number"]

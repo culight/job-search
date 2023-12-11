@@ -11,6 +11,7 @@ steps:
       - "-c"
       - |
         pip3 install -r requirements.txt \
+        && gcloud auth application-default login \
         && python3 -m job_search.data.pipeline \
           --project=gcp-practice-365607 \
           --runner=DataflowRunner \

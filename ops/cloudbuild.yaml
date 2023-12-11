@@ -15,14 +15,13 @@ steps:
     waitFor: ["-"]
 
   - id: "build and submit the dataflow job"
-    name: "python"
+    name: "python:3.10"
     entrypoint: "bash"
     args:
       - "-c"
       - |
         buildNumber=$(cat _BUILDNUMBER) \
         && echo "Build Number is ${buildNumber}" \
-        && pip install --upgrade pip \
         && pip install -r requirements.txt \
         && pip list \
         && python -m job_search.data.pipeline \

@@ -16,4 +16,5 @@ steps:
           --runner=DataflowRunner \
           --region=us-central1 \
           --setup_file=./setup.py \
-          --temp_location=gs://dataflow-jobsearch-bucket/temp
+          --temp_location=gs://dataflow-jobsearch-bucket/temp \
+          --noauth_local_webserver

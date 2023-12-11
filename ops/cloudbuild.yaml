@@ -24,7 +24,7 @@ steps:
         && echo "Build Number is ${buildNumber}" \
         && pip install -r requirements.txt \
         && python -m job_search.data.pipeline \
-          --project=gcp-practice \
+          --project=gcp-practice-365607 \
           --runner=DataflowRunner \
           --region=us-central1 \
           --setup_file=./setup.py \

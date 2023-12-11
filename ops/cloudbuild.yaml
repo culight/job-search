@@ -29,5 +29,4 @@ steps:
           --region=us-central1 \
           --setup_file=./setup.py \
           --temp_location=gs://dataflow-jobsearch-bucket/temp \
-          --service_account_email=dataflow-sa@gcp-practice-365607.iam.gserviceaccount.com
     waitFor: ["get build number"]

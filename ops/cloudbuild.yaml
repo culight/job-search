@@ -9,6 +9,8 @@ steps:
     entrypoint: "/bin/bash"
     args:
       - "-c"
+      - |
+      - pip install apache_beam[gcp]
       - python job_search/data/pipeline.py \
         --project=gcp-practice-365607 \
         --runner=DataflowRunner \

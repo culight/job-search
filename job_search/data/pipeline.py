@@ -6,7 +6,6 @@ DEVELOPER NOTES:
 
 import logging
 
-# from .extract import extraction_pipeline
 import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions
 
@@ -17,17 +16,13 @@ LOGGER = logging.getLogger(__name__)
 
 
 def build_pipeline(argv):
-    # extraction_pipeline.run(argv)
     with beam.Pipeline(options=PipelineOptions(argv)) as pipeline:
-        pass
-        # # Read in the data
-        # df = pipeline | "Read CSV" >> beam.io.ReadFromText("data/extract/extracted_jobs.csv")
+        # Read in the data
+        jobs_raw = pipeline | "Read CSV" >> beam.io.ReadFromText(
+            "gs://dataflow-jobsearch-bucket/jobs/gcp/glassdoor_0-100.csv"
+        )
 
-        # # Convert to a PCollection
-        # pcoll = to_pcollection(df)
-
-        # # Write the PCollection to a file
-        # pcoll | "Write CSV" >> beam.io.WriteToText("data/transform/transformed_jobs.csv")
+        jobs_raw | "Write to BQ" beam.io.WriteToBigQuery(dataset="job_search", table="raw_jobs")
 
 
 if __name__ == "__main__":

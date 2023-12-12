@@ -11,6 +11,7 @@ steps:
       - "-c"
       - |
         pip install apache_beam[gcp] \
+        && pip install jobspy \
         && python job_search/data/pipeline.py \
           --project=gcp-practice-365607 \
           --runner=DataflowRunner \

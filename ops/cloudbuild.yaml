@@ -5,7 +5,7 @@ steps:
   #   args: ["-c", "pip install -r requirements.txt && pytest test/test_*.py"]
 
   - id: "build and submit the dataflow job"
-    name: "gcr.io/google_appengine/python"
+    name: "us-central1-docker.pkg.dev/gcp-practice-365607/job-search/job_search:latest"
     entrypoint: "/bin/bash"
     args:
       - "-c"

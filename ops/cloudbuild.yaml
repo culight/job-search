@@ -10,12 +10,12 @@ steps:
     args:
       - "-c"
       - |
-      - pip install apache_beam[gcp] \
-      - && python job_search/data/pipeline.py \
-        --project=gcp-practice-365607 \
-        --runner=DataflowRunner \
-        --region=us-central1 \
-        --setup_file=./setup.py \
-        --temp_location=gs://dataflow-jobsearch-bucket/temp \
-        --staging_location=gs://dataflow-jobsearch-bucket/staging \
-        --service_account_email=dataflow-sa@gcp-practice-365607.iam.gserviceaccount.com
+        pip install apache_beam[gcp] \
+        && python job_search/data/pipeline.py \
+          --project=gcp-practice-365607 \
+          --runner=DataflowRunner \
+          --region=us-central1 \
+          --setup_file=./setup.py \
+          --temp_location=gs://dataflow-jobsearch-bucket/temp \
+          --staging_location=gs://dataflow-jobsearch-bucket/staging \
+          --service_account_email=dataflow-sa@gcp-practice-365607.iam.gserviceaccount.com

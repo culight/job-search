@@ -22,7 +22,9 @@ def build_pipeline(argv):
             "gs://dataflow-jobsearch-bucket/jobs/gcp/glassdoor_0-100.csv"
         )
 
-        jobs_raw | "Write to BQ" beam.io.WriteToBigQuery(dataset="job_search", table="raw_jobs")
+        jobs_raw | "Write to BQ" >> beam.io.WriteToBigQuery(
+            dataset="job_search", table="raw_jobs"
+        )
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@ def build_pipeline(argv):
         )
 
         jobs_raw | "Write to BQ" >> beam.io.WriteToBigQuery(
-            dataset="job_search", table="raw_jobs"
+            dataset="job_search", table="raw_jobs", project="gcp-practice-325719"
         )
 
 

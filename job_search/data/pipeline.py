@@ -24,9 +24,9 @@ def build_pipeline(argv):
 
         LOGGER.debug(f"jobs_raw: {jobs_raw}")
 
-        # jobs_raw | "Write to BQ" >> beam.io.WriteToBigQuery(
-        #     dataset="job_search", table="raw_jobs", project="gcp-practice-325719"
-        # )
+        jobs_raw | "Write to BQ" >> beam.io.WriteToBigQuery(
+            dataset="job_search", table="raw_jobs", project="gcp-practice-325719"
+        )
 
 
 if __name__ == "__main__":
